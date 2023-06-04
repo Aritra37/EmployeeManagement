@@ -20,7 +20,7 @@ function Login(){
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="usermame">
+            <label htmlFor="username">
               <strong>username</strong>
             </label>
             <input

@@ -1,10 +1,10 @@
 import React from "react";
-import Login from "./Login";
+import Login from "./Components/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import Employee from "./Employee";
-import Profile from "./Profile";
-import { Home } from "./Home";
+import Dashboard from "./Components/Dashboard";
+import Employee from "./Components/Employee";
+import Profile from "./Components/Profile";
+import  Home  from "./Components/Home";
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 import React from "react";
-import "bootstrap-icons/font/bootstrap-icons.min.css";
-import { Link, Outlet } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link, Outlet} from "react-router-dom";
+
 function Dashboard() {
   return (
     <div className="container-fluid">
@@ -20,9 +21,13 @@ function Dashboard() {
               id="menu"
             >
               <li>
-                <Link to="/" className="nav-link text-white px-0 align-middle">
-                  <i className="fs-4 bi-speedometer2"></i>
-                  <span className="ms-1 d-none d-sm-inline">Dashboard</span>
+                <Link
+                  to="/"
+                  data-bs-toggle="collapse"
+                  className="nav-link text-white px-0 align-middle"
+                >
+                  <i className="fs-4 bi-speedometer2"></i>{" "}
+                  <span className="ms-1 d-none d-sm-inline">Dashboard</span>{" "}
                 </Link>
               </li>
               <li>
@@ -30,10 +35,10 @@ function Dashboard() {
                   to="/employee"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-people"></i>
+                  <i className="fs-4 bi-people"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">
                     Manage Employees
-                  </span>
+                  </span>{" "}
                 </Link>
               </li>
               <li>
@@ -41,14 +46,14 @@ function Dashboard() {
                   to="profile"
                   className="nav-link px-0 align-middle text-white"
                 >
-                  <i className="fs-4 bi-person"></i>
+                  <i className="fs-4 bi-person"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Profile</span>
                 </Link>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle text-white">
-                  <i class="fs-4 bi-power"></i>
-                  <span class="ms-1 d-none d-sm-inline">Logout</span>
+                <a href="#" className="nav-link px-0 align-middle text-white">
+                  <i className="fs-4 bi-power"></i>{" "}
+                  <span className="ms-1 d-none d-sm-inline">Logout</span>
                 </a>
               </li>
             </ul>
@@ -56,7 +61,7 @@ function Dashboard() {
         </div>
         <div class="col p-0 m-0">
           <div className="p-2 d-flex justify-content-center shadow">
-            <h4>Employee Management</h4>
+            <h4>Employee Management System</h4>
           </div>
           <Outlet />
         </div>

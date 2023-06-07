@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'; 
+import {useNavigate} from 'react-router-dom';
 function AddEmployee() {
     const [data,setData]=useState({
         name:'',
@@ -9,18 +10,14 @@ function AddEmployee() {
         joiningdate:'',
         password:''
     })
+    const navigate=useNavigate();
 
     const handleSubmit=(event)=>{
         event.preventDefault();
-        const formdata=new FormData();
-        formdata.append("name",data.name);
-        formdata.append("email",data.email);
-        formdata.append("contact",data.contact);
-        formdata.append("department",data.department);
-        formdata.append("joiningDate",data.joiningdate);
-        formdata.append("password",data.password);
-        axios.post('http://localhost:8000/create',formdata)
-        .then(res=>console.log(res))
+        axios.post('http://localhost:8000/create',data)
+        .then(res=>{
+          navigate('/employee');
+        })
         .catch(err=>console.log(err));
     }
   return (
@@ -84,7 +81,7 @@ function AddEmployee() {
             Joining Date
           </label>
           <input
-            type="date"
+            type="text"
             class="form-control"
             id="inputJoining"
             placeholder="Enter Joining Date"

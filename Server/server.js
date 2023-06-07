@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import multer from 'multer';
-import path from 'path';
+import path, { resolve } from 'path';
 
 const app=express();
 app.use(cors()); //Middlewares
@@ -57,25 +57,41 @@ app.post('/login',(req,res)=>{
 })
 
 app.post('/create',(req,res)=>{
-    const sql="INSERT INTO EmployeeList (`name`,`email`,`contact`,`department`,`joiningDate`,`password`) VALUES(?)";
+    const sql="INSERT INTO employees (`name`,`email`,`contact`,`department`,`joiningDate`,`password`) VALUES(?)";
     bcrypt.hash(req.body.password?.toString(),10,(err,hash)=>{
-        if(err) 
+        if(err)
         return res.json({Error:"Error in hashing password"});
         const values=[
             req.body.name,
             req.body.email,
             req.body.contact,
             req.body.department,
-            req.body.joiningDate,
+            req.body.joiningdate,
             hash,
         ]
         connection.query(sql,[values],(err,result)=>{
-            if(err)
-            return res.json({Error:"Inside signup query"});
+            if(err)return res.json({Error:"Inside signup query"});
             return res.json({Status:"Success"});
         })
     })
 })
+
+app.get("/getEmployee", (req, res) => {
+  const sql = "SELECT * FROM employees";
+  connection.query(sql, (err, result) => {
+    if (err) return res.json({ Error: "Unable to fetch data" });
+    return res.json({ Status: "Success", Result: result });
+  });
+});
+
+app.delete("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = "DELETE FROM employees WHERE id=?";
+  connection.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Error: "Unable to delete" });
+    return res.json({ Status: "Success" });
+  });
+});
 
 app.listen(8000,()=>{
     console.log("Running");

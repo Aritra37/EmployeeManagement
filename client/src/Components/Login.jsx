@@ -2,20 +2,23 @@ import React, { useState } from "react";
 import "../styles/login.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 function Login() {
   const [values, setValues] = useState({
     username: "",
     password: "",
   });
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   const [error, setError] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:8000/login", values)
       .then((res) => {
         if (res.data.Status === "Success") {
-          navigate('/');
+          navigate("/");
         } else {
           setError(res.data.Error);
         }
@@ -37,10 +40,9 @@ function Login() {
               type="text"
               placeholder="Enter username"
               name="username"
-              onChange={(e) =>
-                setValues({ ...values, username: e.target.value })
-              }
+              onChange={(e) => setValues({ ...values, username: e.target.value })}
               className="form-control rounded-0"
+              autoComplete="off"
             />
           </div>
           <div className="mb-3">
@@ -49,7 +51,7 @@ function Login() {
             </label>
             <input
               type="password"
-              placeholder="Enter password"
+              placeholder="Enter Password"
               name="password"
               onChange={(e) =>
                 setValues({ ...values, password: e.target.value })
@@ -60,7 +62,7 @@ function Login() {
           <button type="submit" className="btn btn-success w-100 rounded-0">
             Log in
           </button>
-          <p>You agree to our terms and conditions</p>
+          <p>You are agree to aour terms and policies</p>
         </form>
       </div>
     </div>

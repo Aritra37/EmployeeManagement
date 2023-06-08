@@ -10,7 +10,15 @@ function Dashboard() {
     axios.get('http://localhost:8000/dashboard')
     .then((res) => {
       if (res.data.Status === "Success") {
-
+          if(res.data.role==="admin")
+          {
+            navigate('/');
+          }
+          else
+          {
+            const id=res.data.id;
+            navigate('/employeedetails/'+id)
+          }
       } else {
         navigate('/start');
       }
@@ -59,15 +67,6 @@ function Dashboard() {
                   <span className="ms-1 d-none d-sm-inline">
                     Manage Employees
                   </span>{" "}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="profile"
-                  className="nav-link px-0 align-middle text-white"
-                >
-                  <i className="fs-4 bi-person"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Profile</span>
                 </Link>
               </li>
               <li onClick={handleLogout}>

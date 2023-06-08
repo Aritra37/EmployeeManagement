@@ -5,10 +5,17 @@ import cookieParser from 'cookie-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import multer from 'multer';
-import path, { resolve } from 'path';
+import path from 'path';
+
 
 const app=express();
-app.use(cors()); //Middlewares
+app.use(
+  cors({
+    origin: ["http://localhost:3000/"],
+    methods:["POST","GET","PUT"],
+    credentials:true
+  })
+); //Middlewares
 app.use(cookieParser()); //Middlewares
 app.use(express.json()); //middlewares
 
@@ -44,9 +51,12 @@ app.post('/login',(req,res)=>{
     const sql="SELECT * FROM users WHERE username =? AND password = ?";
     connection.query(sql,[req.body.username,req.body.password],(err,result)=>{
         if(err)
-        return res.json({Error:"Error",Error:"Error running in query"});
+        return res.json({Error:"Error",Error:"Error in running query"});
         if(result.length>0)
         {
+            const id=result[0].id;
+            const token=jwt.sign({id},"jwt-secret-key",{expiresIn:'1d'});
+            res.cookie('token',token);
             return res.json({Status:"Success"})
         }
         else
@@ -93,6 +103,27 @@ app.delete("/delete/:id", (req, res) => {
   });
 });
 
+const UserVerfication=(req,res,next)=>{
+    const token=req.cookies.token;
+    if(!token){
+        res.json({Error:"Sorry you are not authenticated"});
+    }
+    else
+    {
+        jwt.verify(token,"jwt-secret-key",(err,decoded)=>{
+            if(err)return res.json({Error:"Wrong Token"})
+            next();
+        })
+    }
+}
+app.get('/dashboard',UserVerfication,(req,res)=>{
+    return res.json({Status:"Success"});
+})
+
+app.get('/logout',(req,res)=>{
+    res.clearCookie('token');
+    return res.json({Status:"Success"});
+})
 app.listen(8000,()=>{
     console.log("Running");
 })

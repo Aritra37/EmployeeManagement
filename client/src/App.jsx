@@ -6,6 +6,7 @@ import Employee from "./Components/Employee";
 import Profile from "./Components/Profile";
 import Home  from "./Components/Home";
 import AddEmployee from "./Components/AddEmployee";
+import Start from "./Components/Start";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/create" element={<AddEmployee />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/start" element={<Start />}></Route>
       </Routes>
     </BrowserRouter>
   );

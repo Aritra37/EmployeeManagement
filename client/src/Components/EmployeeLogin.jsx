@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function EmployeeLogin() {
   const [values, setValues] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   axios.defaults.withCredentials=true;
   const navigate = useNavigate();
-  axios.defaults.withCredentials = true;
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
@@ -35,15 +34,15 @@ function EmployeeLogin() {
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="username">
+            <label htmlFor="email">
               <strong>username or email</strong>
             </label>
             <input
-              type="text"
+              type="email"
               placeholder="Enter username or email"
-              name="username"
-              onChange={(e) =>
-                setValues({ ...values, username: e.target.value })
+              name="email"
+              onChange={e =>
+                setValues({ ...values, email: e.target.value })
               }
               className="form-control rounded-0"
               autoComplete="off"
@@ -57,7 +56,7 @@ function EmployeeLogin() {
               type="password"
               placeholder="Enter Password"
               name="password"
-              onChange={(e) =>
+              onChange={e =>
                 setValues({ ...values, password: e.target.value })
               }
               className="form-control rounded-0"

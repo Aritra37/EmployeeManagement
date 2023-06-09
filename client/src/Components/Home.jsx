@@ -3,24 +3,18 @@ import React from 'react'
 function Home() {
   return (
     <div>
-      {/* List of admin  */}
-      <div className="mt-4 px-5 pt-3">
-        <h3>List of Admins</h3>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Admin</td>
-              <td>Admin</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <marquee>
+        <h3>Welcome Admin!!!</h3>
+      </marquee>
+      <br />
+      <br />
+      <h3 align="center">To Add Employees CLick on Manage Employees</h3>
+      <br />
+      <br />
+      <h3 align="center">To Logout Click On Logout Button</h3>
+      <br />
+      <br />
+      <h5 align="center">Thank You! Hope you are having a great day</h5>
     </div>
   );
 }

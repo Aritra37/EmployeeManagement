@@ -8,7 +8,7 @@ function Dashboard() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios.get('http://localhost:8000/dashboard')
-    .then((res) => {
+    .then(res => {
       if (res.data.Status === "Success") {
           if(res.data.role==="admin")
           {

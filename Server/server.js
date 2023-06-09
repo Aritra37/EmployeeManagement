@@ -4,9 +4,6 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import multer from 'multer';
-import path from 'path';
-
 
 const app=express();
 app.use(
@@ -25,16 +22,6 @@ const connection=mysql.createConnection({
    port:3306,
    password:"",
    database:"Employee"
-})
-
-const storage=multer.diskStorage({
-    filename:(req,file,cb)=>{
-        cb(null,file.filename+"_"+Date.now()+path.extname(file.originalname));
-    }
-})
-
-const upload=multer({
-    storage:storage
 })
 
 connection.connect(function(err){

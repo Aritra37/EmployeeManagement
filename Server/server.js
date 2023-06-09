@@ -66,7 +66,7 @@ app.post('/login',(req,res)=>{
     })
 })
 app.post("/employeelogin", (req, res) => {
-  const sql = "SELECT * FROM employees WHERE email";
+  const sql = "SELECT * FROM employees WHERE email=?";
   connection.query(sql,[req.body.email],(err, result) => {
       if (err)
         return res.json({ Error: "Error", Error: "Error in running query" });

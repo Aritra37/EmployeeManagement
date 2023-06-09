@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/login.module.css";
+import '../styles/login.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -40,7 +40,9 @@ function Login() {
               type="text"
               placeholder="Enter username"
               name="username"
-              onChange={(e) => setValues({ ...values, username: e.target.value })}
+              onChange={(e) =>
+                setValues({ ...values, username: e.target.value })
+              }
               className="form-control rounded-0"
               autoComplete="off"
             />
@@ -62,7 +64,7 @@ function Login() {
           <button type="submit" className="btn btn-success w-100 rounded-0">
             Log in
           </button>
-          <p>You are agree to aour terms and policies</p>
+          <p>You are agree to our terms and conditions</p>
         </form>
       </div>
     </div>

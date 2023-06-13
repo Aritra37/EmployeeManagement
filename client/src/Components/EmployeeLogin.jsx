@@ -16,10 +16,9 @@ function EmployeeLogin() {
     event.preventDefault();
     axios
       .post("http://localhost:8000/employeelogin", values)
-      .then((res) => {
+      .then(res => {
         if (res.data.Status === "Success") {
-          const id=res.data.id;
-          navigate("/employeedetails/"+id);
+          navigate('/dash');
         } else {
           setError(res.data.Error);
         }

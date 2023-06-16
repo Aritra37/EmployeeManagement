@@ -5,7 +5,6 @@ const LoginReducer = (state = false, action) => {
     case "Login":
       return true;
     case "Logout":
-      // console.log("in reducer");
       return false;
     default:
       return state;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const TaskScheema = mongoose.Schema({
+const TaskScheema= mongoose.Schema({
   email: {
     type: String,
     required: true,

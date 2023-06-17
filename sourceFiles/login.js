@@ -2,13 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import Employees from "../models/users.js";
 
-var app = express();
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.post("/", (req, res) => {
-  var data = req.body;
+  const data = req.body;
 
   console.log("we in backend on login");
   console.log(data);

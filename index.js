@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 import connectDB from "./sourceFiles/connectDB.js";
 import loginFile from "./sourceFiles/login.js";
-import createUser from "./sourceFiles/fakeFile.js";
+import createUser from "./sourceFiles/createUser.js";
 import registerUser from "./sourceFiles/registerUser.js";
 import allEmployeesFile from "./sourceFiles/allEmployees.js";
 import addTaskFile from "./sourceFiles/addTask.js";
@@ -22,7 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 dotenv.config();
 
 connectDB();
-
 
 app.use("/login", loginFile);
 app.use("/addEmployee", registerUser);

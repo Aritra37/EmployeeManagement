@@ -22,11 +22,9 @@ function Navbar() {
 
   return (
     <nav className="nav">
-      <div className="logos">
         <div className="singleElement">
           <h2>Tracker</h2>
         </div>
-      </div>
       <div className="display-mode">
         <button onClick={handleLogClick} className="LogButton button">
           {isLoggedIn ? "LogOut" : "LogIn"}

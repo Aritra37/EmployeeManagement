@@ -14,14 +14,6 @@ $grey: #AEAEAE;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     
-    .logos{
-        height: 90px;
-        grid-column:  2/3;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        align-items: center;
-
         .singleElement{
             height: 90px;
             display: flex;
@@ -55,5 +47,3 @@ $grey: #AEAEAE;
             cursor: pointer;
         }
     }
-
-}

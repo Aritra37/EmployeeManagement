@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 const LoginReducer = (state = false, action) => {
-  switch (action.type){
+  switch (action.type){ 
     case "Login":
       return true;
     case "Logout":

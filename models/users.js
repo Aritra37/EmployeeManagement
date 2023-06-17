@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const UserScheema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -33,6 +33,6 @@ const UserScheema = mongoose.Schema({
   },
 });
 
-const Employees = mongoose.model("Employees", UserScheema);
+const Employees = mongoose.model("Employees", UserSchema);
 
 export default Employees;

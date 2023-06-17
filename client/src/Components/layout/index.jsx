@@ -24,7 +24,6 @@ function Layout() {
           >
             {" "}
           </Route>
-          {/* <Route exact path = "/details" element = {<Details />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

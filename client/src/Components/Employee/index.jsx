@@ -49,7 +49,7 @@ function EmployeeDashboard() {
         <div className="employee-dashboard">
           <div className="today-task">
             <div className="h3">
-              <h3>Today’s Tasks</h3>
+              <h3>Today's Tasks</h3>
             </div>
             <div className="edit">
               <button

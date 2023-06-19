@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 
 function EditProfile(props) {
   var email = useSelector((state) => state.Email);
-  //var d = new Date();
   var [name, setName] = React.useState(useSelector((state) => state.name));
   var [contact, setContact] = React.useState(
     useSelector((state) => state.mobile)

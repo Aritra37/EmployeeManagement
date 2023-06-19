@@ -23,8 +23,8 @@ function Login() {
   const navigate = useNavigate();
   const sendData = async (e) => {
     e.preventDefault();
-    var data = { email, password };
-    var response = await axios.post("/login", data);
+    const data = { email, password };
+    const response = await axios.post("/", data);
     console.log(response);
     if (response.data === "NO USER" || response.data === "INVALID LOGIN") {
       alert("Wrong Credentials");
@@ -42,7 +42,7 @@ function Login() {
         navigate("/employee");
       }
     }
-  };
+  }
   return (
     <div className="form-page">
       <form action="" className="form">
@@ -76,8 +76,7 @@ function Login() {
         />
         <br />
         <button onClick={sendData} className="submitButton button">
-          {" "}
-          Login To LogBook{" "}
+          Login To LogBook
         </button>
       </form>
     </div>

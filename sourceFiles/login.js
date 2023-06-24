@@ -13,7 +13,6 @@ app.post("/signin", (req, res) => {
   console.log("we in backend on login");
   Employees.findOne({ email: data.email })
   .then((result)=>{
-      console.log(result);
       if(result==null)
       res.json({status : 400 });
       else

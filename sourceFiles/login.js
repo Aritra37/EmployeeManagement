@@ -9,8 +9,6 @@ app.use(bodyParser.json());
 
 app.post("/signin", (req, res) => {
   const data = req.body;
-
-  console.log("we in backend on login");
   Employees.findOne({ email: data.email })
   .then((result)=>{
       if(result==null)

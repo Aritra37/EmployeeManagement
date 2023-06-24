@@ -19,22 +19,28 @@ import {
 function Login() {
   var [password, setPassword] = React.useState("");
   var [email, setEmail] = React.useState("");
+  let resp = [];
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const sendData = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const data = { email, password };
-    const response = await axios.post("/", data);
-    console.log(response);
-    if (response.data === "NO USER" || response.data === "INVALID LOGIN") {
+    console.log(data);
+    const response = await axios
+      .post("http://localhost:8000/login/signin", data)
+      .then((res)=>{
+        console.log(res);
+        resp = res.data;
+      })
+    if (resp.status !==200) {
       alert("Wrong Credentials");
     } else {
       dispatch(LogInAction());
       dispatch(SetEmailAction(email));
-      dispatch(SetMobileAction(response.data.contact));
-      dispatch(SetNameAction(response.data.name));
-      dispatch(SetPasswordAction(response.data.password));
-      if (response.data.admin === true) {
+      dispatch(SetMobileAction(resp.result.contact));
+      dispatch(SetNameAction(resp.result.name));
+      dispatch(SetPasswordAction(resp.result.password));
+      if (resp.result.admin === true) {
         dispatch(SetAdminAction());
         navigate("/admin");
       } else {

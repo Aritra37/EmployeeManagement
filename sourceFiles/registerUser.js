@@ -2,13 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import Employees from "../models/users.js";
 
-var app = express();
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.post("/", (req, res) => {
-  var data = req.body;
-  var Employee = new Employees({
+  const data = req.body;
+  const Employee = new Employees({
     name: data.name,
     email: data.email,
     password: data.password,

@@ -4,8 +4,9 @@ import { MdCancel } from "react-icons/md";
 
 import "./addEmployee.scss";
 
-function AddEmployee(props) {
+function AddEmployee(props) { 
   var d = new Date();
+  let resp=[];
   var [name, setName] = React.useState("");
   var [email, setEmail] = React.useState("");
   var [contact, setContact] = React.useState("");
@@ -16,10 +17,16 @@ function AddEmployee(props) {
   const sendEmployeeData = async (event) => {
     event.preventDefault();
 
-    var admin = false;
-    var data = { name, email, contact, department, joining, password, admin };
-    var response = await axios.post("/addEmployee", data);
-    if (response.data === "Employee added to database succesfully") {
+    const admin = false;
+    const data = { name, email, contact, department, joining, password, admin };
+    console.log(data);
+    const response = await axios
+    .post("http://localhost:8000/addEmployee", data)
+    .then((res)=>{
+      console.log(res);
+      resp=res.data;
+    })
+    if (resp === "Employee added to database succesfully") {
       alert("Employee Added to database Successfully");
       props.refreshData();
     } else {

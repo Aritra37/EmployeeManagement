@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-
+import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +17,7 @@ import getTasksForEmployees from "./sourceFiles/getTasksForEmployees.js";
 import updateEmployeesFile from "./sourceFiles/updateEmployee.js";
 import deleteEmployeeFile from "./sourceFiles/deleteEmployee.js";
 var app = express();
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 dotenv.config();

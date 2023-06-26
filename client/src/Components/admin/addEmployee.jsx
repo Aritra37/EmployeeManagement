@@ -4,7 +4,8 @@ import { MdCancel } from "react-icons/md";
 
 import "./addEmployee.scss";
 
-function AddEmployee(props) { 
+function AddEmployee(props) {
+  const [show,setShow]=React.useState(true); 
   var d = new Date();
   let resp=[];
   var [name, setName] = React.useState("");
@@ -16,7 +17,7 @@ function AddEmployee(props) {
 
   const sendEmployeeData = async (event) => {
     event.preventDefault();
-
+    setShow(false);
     const admin = false;
     const data = { name, email, contact, department, joining, password, admin };
     console.log(data);
@@ -35,7 +36,10 @@ function AddEmployee(props) {
   };
 
   return (
-    <div className="modalss">
+    <div>
+      {
+      show?
+      <div className="modalss">
       <button
         className="cancel"
         onClick={(e) => {
@@ -110,7 +114,11 @@ function AddEmployee(props) {
           <br />
         </form>
       </div>
+    </div> : null
+      
+    }
     </div>
+    
   );
 }
 

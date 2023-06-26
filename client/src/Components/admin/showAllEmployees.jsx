@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import "./allEmployees.scss";
 import "./index.scss";
 import DeleteButton from "./deleteEmployee";
 
 function ShowAllData(props) {
-  var data = props.props;
-
-  var [deleteShow, setDeleteShow] = React.useState(false);
-  var [idSelected, setIdSelected] = React.useState("");
-
-  // const [employees, setEmployees] = useState(data);
-  var toPass = {
+  const data=props.props;
+  const [deleteShow, setDeleteShow] = React.useState(false);
+  const [idSelected, setIdSelected] = React.useState([]);
+  const toPass = {
     idSelected,
     setDeleteShow,
   };
@@ -39,13 +36,11 @@ function ShowAllData(props) {
                     e.preventDefault();
                     props.setEmployeeDateShown(true);
                     props.setEmployeeIdSelected(employee.email);
-                    // data = props.props;
                   }}
                 >
                   <u>{employee.name}</u>
                 </button>
               </td>
-
               <td>{employee.email}</td>
               <td>{employee.contact}</td>
               <td>{employee.department}</td>

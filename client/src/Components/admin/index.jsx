@@ -20,9 +20,13 @@ function AdminDashBoard() {
   }
 
   const getAllEmployees = async () => {
-    var response = await axios.get("/getEmployees");
-    setAllData(response.data);
-    setDataSet(true);
+    const response = await axios
+    .get("http://localhost:8000/getEmployees")
+    .then((res)=>{
+      console.log(res);
+          setAllData(res.data.data);
+          setDataSet(true);
+    })
   };
 
   const isAdmin = useSelector((state) => state.isAdmin);

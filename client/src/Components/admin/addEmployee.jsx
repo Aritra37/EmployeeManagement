@@ -47,7 +47,7 @@ function AddEmployee(props) {
       </button>
       <div className="addTask">
         <span>
-          <h3 className="addNew">Add New Emoployee</h3>
+          <h3 className="addNew">Add New Employee</h3>
         </span>
         <form action="">
           <label htmlFor="name">Name</label>

@@ -29,7 +29,6 @@ function Login() {
     const response = await axios
       .post("http://localhost:8000/login/signin", data)
       .then((res)=>{
-        console.log(res);
         resp = res.data;
       })
     if (resp.status !==200) {

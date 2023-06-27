@@ -7,7 +7,8 @@ const app = express(); //routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/signin", (req, res) => {
+app.post("/signin", (req, res) => 
+{
   const data = req.body;
   Employees.findOne({ email: data.email })
   .then((result)=>{

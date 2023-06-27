@@ -10,11 +10,11 @@ function AdminDashBoard() {
   React.useEffect(() => {
     getAllEmployees();
   }, []);
-  var [dataSet, setDataSet] = React.useState(false);
-  var [allData, setAllData] = React.useState([]);
-  var [isAddEmployeeShow, setIsEmployee] = React.useState(false);
-  var [isEmployeeDataShown, setEmployeeDateShown] = React.useState(false);
-  var [EmployeeIdSelected, setEmployeeIdSelected] = React.useState("");
+  const [dataSet, setDataSet] = React.useState(false);
+  const [allData, setAllData] = React.useState([]);
+  const [isAddEmployeeShow, setIsEmployee] = React.useState(false);
+  const [isEmployeeDataShown, setEmployeeDateShown] = React.useState(false);
+  const [EmployeeIdSelected, setEmployeeIdSelected] = React.useState("");
   function handleAddEmployee() {
     setIsEmployee(!isAddEmployeeShow);
   }

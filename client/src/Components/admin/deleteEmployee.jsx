@@ -3,16 +3,21 @@ import "./deleteEmployee.scss";
 import axios from "axios";
 
 function DeleteButton(props) {
-  var data = props.props;
-
+  const data = props.props;
+  let resp=[];
   const deleteClicked = async (e) => {
     e.preventDefault();
-    var toSend = { email: data.idSelected };
-    var response = await axios.post("/deleteEmployee", toSend);
-    if (response.data === "Deleted") {
-      alert("Employee Deleted Succesfully");
-      data.setDeleteShow(false);
-    }
+    const toSend = { email: data.idSelected };
+    const response = await axios
+    .post("http://localhost:8000/deleteEmployee",toSend)
+    .then((res)=>{
+        console.log(res);
+        if (resp.status==200) 
+        {
+          alert("Employee Deleted Succesfully");
+          data.setDeleteShow(false);
+        }
+    })
   };
 
   return (

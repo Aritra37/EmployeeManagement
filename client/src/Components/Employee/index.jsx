@@ -10,22 +10,22 @@ import WeeklyEmployeeBar from "./weeklyEmployeeBar";
 import TodayEmployee from "./todayEmployee";
 
 function EmployeeDashboard() {
-  var rightNow = new Date();
-  var [addTaskShow, setAddTask] = React.useState(false);
-  var [editProfileShow, setEditProfile] = React.useState(false);
-  var isLoggedIn = useSelector((state) => state.isLoggedIn);
-  var email = useSelector((state) => state.Email);
-  var [allTasks, setAllTasks] = React.useState([]);
+   const rightNow = new Date();
+   const [addTaskShow, setAddTask] = React.useState(false);
+   const [editProfileShow, setEditProfile] = React.useState(false);
+   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+   const email = useSelector((state) => state.Email);
+   const [allTasks, setAllTasks] = React.useState([]);
 
-  var [dateRequired, setDateRequired] = React.useState(rightNow);
+   const [dateRequired, setDateRequired] = React.useState(rightNow);
 
   React.useEffect(() => {
     getAllTasks();
   }, []);
 
   const getAllTasks = async () => {
-    var data = { email };
-    var response = await axios.post("/getTasksForEmployee", data);
+    const data = { email };
+    const response = await axios.post("/getTasksForEmployee", data)
     setAllTasks(response.data);
   };
 

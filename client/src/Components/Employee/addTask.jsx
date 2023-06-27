@@ -5,19 +5,20 @@ import { MdCancel } from "react-icons/md";
 
 import { useSelector } from "react-redux";
 function AddTaskButton(props) {
-  var [type, setType] = React.useState("Work");
-  var t = new Date();
-  var [description, setDescription] = React.useState("");
-  var [startTime, setStart] = React.useState(t.getTime());
-  var [duration, setDuration] = React.useState(0);
+  let resp=[];
+  const [type, setType] = React.useState("Work");
+  const t = new Date();
+  const [description, setDescription] = React.useState("");
+  const [startTime, setStart] = React.useState(t.getTime());
+  const [duration, setDuration] = React.useState(0);
 
   var email = useSelector((state) => state.Email);
 
   const AddTask = async (e) => {
     e.preventDefault();
     props.props();
-    var data = { email, type, description, startTime, duration };
-    var t2 = new Date(startTime);
+    const data = { email, type, description, startTime, duration };
+    const t2 = new Date(startTime);
     console.log(t2);
     console.log(t);
     if (t2.getTime() > t.getTime()) {
@@ -30,9 +31,14 @@ function AddTaskButton(props) {
     ) {
       alert("please enter all fields");
     } else {
-      var response = await axios.post("addTask", data);
-      if (response.data === "task saved succesfully") {
-        alert("taks saved succesfully");
+      const response = await axios
+      .post("http://localhost:8000/addTask", data)
+      .then((res)=>{
+        console.log(res);
+        resp=res.data;
+      })
+      if (resp === "task saved succesfully") {
+        alert("tasks saved succesfully");
         props.refreshTasks();
       }
     }

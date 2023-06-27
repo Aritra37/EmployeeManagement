@@ -7,19 +7,22 @@ import "./editProfile.scss";
 import { useSelector } from "react-redux";
 
 function EditProfile(props) {
-  var email = useSelector((state) => state.Email);
-  var [name, setName] = React.useState(useSelector((state) => state.name));
-  var [contact, setContact] = React.useState(
+  const email = useSelector((state) => state.Email);
+  const [name, setName] = React.useState(useSelector((state) => state.name));
+  const [contact, setContact] = React.useState(
     useSelector((state) => state.mobile)
   );
-  var [password, setPassword] = React.useState(
+  const [password, setPassword] = React.useState(
     useSelector((state) => state.password)
   );
 
   const updateData = async (e) => {
     e.preventDefault();
     var data = { email, name, contact, password };
-    await axios.post("/updateEmployee", data);
+    await axios.post("http://localhost:8000/updateEmployee", data)
+    .then((res)=>{
+      console.log(res);
+    }).catch((err)=>{console.log(err)})
     props.props();
   };
 

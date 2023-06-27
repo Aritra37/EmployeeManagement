@@ -7,26 +7,21 @@ var app = Express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/", (req, res) => {
+app.post("/", async(req, res) => {
   var data = req.body;
   console.log(data);
 
-  try {
-    Employees.updateOne(
+ try {
+    const result = await Employees.updateOne(
       { email: data.email },
-      { password: data.password, contact: data.contact, name: data.name },
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-        // console.log(result);
-      }
+      { password: data.password, contact: data.contact, name: data.name }
     );
 
-    res.send("updation Succesful");
+    console.log(result);
+    res.status(200).json(result);
   } catch (err) {
     console.log(err);
-    res.send("error");
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

@@ -24,9 +24,15 @@ function EmployeeDashboard() {
   }, []);
 
   const getAllTasks = async () => {
-    const data = { email };
-    const response = await axios.post("/getTasksForEmployee", data)
-    setAllTasks(response.data);
+    const data =  {email} ;
+    console.log(data);
+    const response = await axios
+      .post("http://localhost:8000/getTasksForEmployee", data)
+      .then((res) => {
+        console.log(res);
+        setAllTasks(res.data.data);
+      });
+    
   };
 
   function handleEdit() {
@@ -67,12 +73,13 @@ function EmployeeDashboard() {
               </button>
             </div>
             <div className="alltask">
+              {console.log(allTasks)}
               <AllTasks props={allTasks} dateFor={rightNow} />
             </div>
           </div>
           <div className="today-graph">
             <div className="h3">
-              <h3>Today’s Stats</h3>
+              <h3>Today's Stats</h3>
             </div>
             <div className="border">
               <div style={{ width: "500px", margin: "auto" }}>

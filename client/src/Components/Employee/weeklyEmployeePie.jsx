@@ -2,22 +2,22 @@ import React from "react";
 import PieChart from "./PieChart";
 
 function WeeklyEmployeePie(props) {
-  var data = props.props;
-  var work = 0;
-  var meet = 0;
-  var recess = 0;
+  const data = props.props;
+  const work = 0;
+  const meet = 0;
+  const recess = 0;
   for (var i = 6; i >= 0; i++) {
-    var today = new Date();
+    const today = new Date();
     today.setDate(today.getDate() - i);
-    var dd = String(today.getDate()).padStart(2, "0");
-    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    var yyyy = today.getFullYear();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
 
     today = yyyy + "-" + mm + "-" + dd;
 
     for (var i = 0; i < data.length; i++) {
-      var current = data[i];
-      var dateloc = current.start.toString();
+      const current = data[i];
+      const dateloc = current.start.toString();
       dateloc = dateloc.slice(0, 10);
       if (dateloc == today) {
         if (current.type == "Meeting") {
@@ -37,4 +37,4 @@ function WeeklyEmployeePie(props) {
   return <PieChart props={toPass} />;
 }
 
-export default WeeklyEmployeePie;
+export default WeeklyEmployeePiconst

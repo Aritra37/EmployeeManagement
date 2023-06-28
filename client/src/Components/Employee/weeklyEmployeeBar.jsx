@@ -2,20 +2,20 @@ import React from "react";
 import BarChart from "./StackedBarChart";
 
 function WeeklyEmployeeBar(props) {
-  const data = props.props;
-  const totalWork = [];
-  const totalMeet = [];
-  const totalBreak = [];
-  const pastDates = [];
+  var data = props.props;
+  var totalWork = [];
+  var totalMeet = [];
+  var totalBreak = [];
+  var pastDates = [];
   for (var j = 6; j >= 0; j--) {
-    const work = 0;
-    const meet = 0;
-    const recess = 0;
-    const today = new Date();
+    var work = 0;
+    var meet = 0;
+    var recess = 0;
+    var today = new Date();
     today.setDate(today.getDate() - j);
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    const yyyy = today.getFullYear();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
 
     today = yyyy + "-" + mm + "-" + dd;
 
@@ -38,8 +38,8 @@ function WeeklyEmployeeBar(props) {
     totalWork.push(work);
     pastDates.push(today);
   }
-  const toPass = [pastDates, totalWork, totalMeet, totalBreak];
+  var toPass = [pastDates, totalWork, totalMeet, totalBreak];
   return <BarChart props={toPass} />;
 }
 
-export default WeeklyEmployeeBaconst
+export default WeeklyEmployeeBar;

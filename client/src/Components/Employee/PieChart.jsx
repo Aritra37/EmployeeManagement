@@ -6,11 +6,11 @@ import { Pie} from "react-chartjs-2";
 function PieChart(props) {
   var current = props.props;
 
-  const ar = ["#29BF12", "#0361FF", "#F21B3F"];
-  const lab = ["Working", "Meeting", "Break"];
-  const work = current[0];
-  const meet = current[1];
-  const recess = current[2];
+  var ar = ["#29BF12", "#0361FF", "#F21B3F"];
+  var lab = ["Working", "Meeting", "Break"];
+  var work = current[0];
+  var meet = current[1];
+  var recess = current[2];
 
   if (work + meet + recess === 0) {
     ar = ["#9F8772", "#9F8772", "#9F8772"];

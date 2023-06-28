@@ -3,14 +3,14 @@ import "./TasksTable.scss";
 import "./index.scss";
 
 function AllTasks(props) {
-  const data = props.props;
-  const today = props.dateFor;
+  var data = props.props;
+  var today = props.dateFor;
   console.log(data)
   const newArr = [];
   if (typeof today != "string") {
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-    const yyyy = today.getFullYear();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
     today = yyyy + "-" + mm + "-" + dd;
   }
   for (var i = 0; i < data.length; i++) {

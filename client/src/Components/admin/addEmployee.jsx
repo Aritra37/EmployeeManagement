@@ -101,7 +101,7 @@ function AddEmployee(props) {
           <label htmlFor="password">Password</label>
           <br />
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

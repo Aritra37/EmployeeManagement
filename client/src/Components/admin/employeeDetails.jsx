@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-
 import { MdArrowDropDownCircle } from "react-icons/md";
 import "./employeeDetails.scss";
 import AllTasks from "../Employee/TasksTable";
@@ -8,20 +7,26 @@ import TodayEmployee from "../Employee/todayEmployee";
 import WeeklyEmployeeBar from "../Employee/weeklyEmployeeBar";
 
 function Details(props) {
-  var today = new Date();
-  var [dateRequired, setDateRequired] = React.useState(today);
-
-  // var email = props.email;
-  var [allTasks, setAllTasks] = React.useState([]);
-  const getAllTasks = async () => {
-    var data = { email: props.email };
-    var response = await axios.post("/getTasksForEmployee", data);
-    setAllTasks(response.data);
-  };
 
   React.useEffect(() => {
     getAllTasks();
-  });
+  },[]);
+
+  const today = new Date();
+  const [dateRequired, setDateRequired] = React.useState(today);
+  const [allTasks, setAllTasks] = React.useState([]);
+   
+  const getAllTasks = async () => 
+  {
+    const data = {email:props.email} ;
+    console.log(data);
+    const response = await axios
+      .post("http://localhost:8000/getTasksForEmployee", data)
+      .then((res) => {
+        console.log(res);
+        setAllTasks(res.data.data);
+      });
+  };
 
   return (
     <main className="modals">
@@ -43,7 +48,7 @@ function Details(props) {
             <form>
               <input
                 type="date"
-                value={today}
+                value={dateRequired}
                 className="button"
                 onChange={(e) => setDateRequired(e.target.value)}
               />

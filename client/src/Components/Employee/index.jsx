@@ -6,7 +6,6 @@ import axios from "axios";
 import AllTasks from "./TasksTable";
 import EditProfile from "./editProfile";
 import WeeklyEmployeeBar from "./weeklyEmployeeBar";
-
 import TodayEmployee from "./todayEmployee";
 
 function EmployeeDashboard() {
@@ -16,15 +15,15 @@ function EmployeeDashboard() {
    const isLoggedIn = useSelector((state) => state.isLoggedIn);
    const email = useSelector((state) => state.Email);
    const [allTasks, setAllTasks] = React.useState([]);
-
    const [dateRequired, setDateRequired] = React.useState(rightNow);
 
   React.useEffect(() => {
     getAllTasks();
   }, []);
 
-  const getAllTasks = async () => {
-    const data =  {email} ;
+  const getAllTasks = async () => 
+  {
+    const data = {email} ;
     console.log(data);
     const response = await axios
       .post("http://localhost:8000/getTasksForEmployee", data)
@@ -32,17 +31,11 @@ function EmployeeDashboard() {
         console.log(res);
         setAllTasks(res.data.data);
       });
-    
   };
 
   function handleEdit() {
     setEditProfile(false);
     setAddTask(!addTaskShow);
-  }
-
-  function handlePress() {
-    setAddTask(false);
-    setEditProfile(true);
   }
 
   React.useEffect(() => {}, [dateRequired]);

@@ -85,7 +85,7 @@ function Login() {
         />
         <br />
         <button onClick={sendData} className="submitButton button">
-          Login To LogBook
+          Login To Tracker
         </button>
       </form>
     </div>

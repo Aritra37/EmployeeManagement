@@ -29,17 +29,21 @@ function Login() {
     const response = await axios
       .post("http://localhost:8000/login/signin", data)
       .then((res)=>{
-        resp = res.data;
+        console.log(res)
+        resp = res;
+      }).catch((err)=>{
+        console.log(err)
       })
-    if (resp.status !==200) {
+    if (resp.status !=200) {
       alert("Wrong Credentials");
     } else {
+      console.log(resp)
       dispatch(LogInAction());
       dispatch(SetEmailAction(email));
-      dispatch(SetMobileAction(resp.result.contact));
-      dispatch(SetNameAction(resp.result.name));
-      dispatch(SetPasswordAction(resp.result.password));
-      if (resp.result.admin === true) {
+      dispatch(SetMobileAction(resp.data.contact));
+      dispatch(SetNameAction(resp.data.name));
+      dispatch(SetPasswordAction(resp.data.password));
+      if (resp.data.admin === true) {
         dispatch(SetAdminAction());
         navigate("/admin");
       } else {

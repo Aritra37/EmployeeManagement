@@ -7,20 +7,28 @@ const app = express(); //routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/signin", (req, res) => 
+app.post("/signin", async(req, res) => 
 {
+  try {
+    
   const data = req.body;
-  Employees.findOne({ email: data.email })
-  .then((result)=>{
-      if(result==null)
-      res.json({status : 400 });
-      else
-      res.json({status : 200, result : result });
-  })
-  .catch((err)=>{
-    console.log(err)
-    res.json({status : 401});
-  })
+  console.log(data)
+  const user =  await Employees.findOne({ email: data.email })
+  console.log(user)
+  if(!user)
+  {
+    return res.status(401).json({message :"user not found"});
+  }
+  const pass = data.password;
+  if(user.password == pass)
+  {
+    res.status(200).json(user);
+  }else{
+    res.status(401).json("Invalid credential")
+  }
+  } catch (error) {
+      res.status(401).json("internal server error")
+  }
 });
 
 export default app;

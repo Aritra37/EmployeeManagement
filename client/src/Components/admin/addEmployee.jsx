@@ -22,7 +22,7 @@ function AddEmployee(props) {
     const data = { name, email, contact, department, joining, password, admin };
     console.log(data);
     const response = await axios
-    .post("http://localhost:8000/addEmployee", data)
+    .post("http://localhost:9000/addEmployee", data)
     .then((res)=>{
       console.log(res);
       resp=res.data;

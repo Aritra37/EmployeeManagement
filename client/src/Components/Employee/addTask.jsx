@@ -32,7 +32,7 @@ function AddTaskButton(props) {
       alert("please enter all fields");
     } else {
       const response = await axios
-      .post("http://localhost:8000/addTask", data)
+      .post("http://localhost:9000/addTask", data)
       .then((res)=>{
         console.log(res);
         resp=res.data;

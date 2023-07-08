@@ -19,7 +19,7 @@ function EditProfile(props) {
   const updateData = async (e) => {
     e.preventDefault();
     var data = { email, name, contact, password };
-    await axios.post("http://localhost:8000/updateEmployee", data)
+    await axios.post("http://localhost:9000/updateEmployee", data)
     .then((res)=>{
       console.log(res);
     }).catch((err)=>{console.log(err)})

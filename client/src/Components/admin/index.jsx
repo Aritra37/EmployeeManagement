@@ -21,7 +21,7 @@ function AdminDashBoard() {
 
   const getAllEmployees = async () => {
     const response = await axios
-    .get("http://localhost:8000/getEmployees")
+    .get("http://localhost:9000/getEmployees")
     .then((res)=>{
       console.log(res);
           setAllData(res.data.data);

@@ -15,4 +15,4 @@ How to Test an App
 Here are some credentials to use our app without any hassle.
 
     Admin Access Mail: admin@gmail.com Password: admin
-    Employee Access Mail: <employee email id> which you will get from the employees section in the admin panel	Password: test
+    Employee Access Mail: <employee email id> which you will get from the employees section in the admin panel.

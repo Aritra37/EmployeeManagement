@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  client:
+    image: aritra37/emp-tracker:client-latest
+    ports:
+      - '3000:3000'
+      - '81:81'
+    volumes:
+      - client:/app/client
+
+  server:
+    image: aritra37/emp-tracker:server-latest
+    ports:
+      - '9000:9000'
+    volumes:
+      - server:/app/server
+
+volumes:
+  client:
+  server:
